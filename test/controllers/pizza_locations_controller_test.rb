@@ -34,4 +34,10 @@ class PizzaLocationsControllerTest < ActionController::TestCase
     assert_response :redirect
   end
   
+  test "near you with longitude and latitude" do
+    get :nearyou, :latitude => 17.44, :longitude => 18.3
+    assert_response :success
+  end
+  
+  
 end

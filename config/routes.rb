@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :pizza_locations do 
     collection do 
       get :nearby
+      get :nearyou
     end
   end
   # The priority is based upon order of creation: first created -> highest priority.

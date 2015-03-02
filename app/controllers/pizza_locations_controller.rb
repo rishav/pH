@@ -6,7 +6,7 @@ class PizzaLocationsController < ApplicationController
   end
   
   def nearby
-    @pizza_locations = PizzaLocation.near(params[:search])
+    @pizza_locations = PizzaLocation.near(params[:search], 10)
   end  
   
   def edit
@@ -20,6 +20,16 @@ class PizzaLocationsController < ApplicationController
     else
       render "edit"
     end        
+  end
+  
+  def nearyou 
+    if params[:latitude].nil? or params[:longitude].nil?
+      location = request.location  
+      byebug
+    else
+      @pizza_locations = PizzaLocation.near([params[:latitude],params[:longitude]], 10)
+    end        
+    render :json => @pizza_locations
   end
   
   private
