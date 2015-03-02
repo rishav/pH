@@ -1,2 +1,6 @@
 <h1><%= @pizza_location.name %></h1>
+<% if current_user.admin %>
+	<%= link_to "Edit", edit_pizza_location_path %>
+<% end %>
+
 <p><%= @pizza_location.complete_address %></p>
