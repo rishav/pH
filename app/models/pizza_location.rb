@@ -24,5 +24,11 @@ class PizzaLocation < ActiveRecord::Base
     self.featured_at = Time.now
     save
   end
+  
+  def primary_photo_url(type)
+    return primary_photo.image.url(type) if primary_photo
+    return photos.first.image.url(type) unless photos.blank?
+    return Photo.new.image.url(type)
+  end  
 
 end

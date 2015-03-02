@@ -1,8 +1,13 @@
 class PizzaLocationsController < ApplicationController
+  before_filter :admin_only?, :only => [:edit, :update]
   
   def show 
     @pizza_location = PizzaLocation.friendly.find(params[:id])
   end
+  
+  def nearby
+    @pizza_locations = PizzaLocation.near(params[:search])
+  end  
   
   def edit
     @pizza_location = PizzaLocation.friendly.find(params[:id])
@@ -21,6 +26,12 @@ class PizzaLocationsController < ApplicationController
 
   def pizza_location_params
     params.require(:pizza_location).permit(:name, :address, :city, :zipcode, :country, :photos_attributes => [:id, :primary, :image, :_destroy])
+  end
+  
+  def admin_only?
+    unless( user_signed_in? and current_user.admin ) 
+      redirect_to "/", :notice => "Access Denied"
+    end    
   end
     
 end

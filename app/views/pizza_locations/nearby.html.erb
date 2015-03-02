@@ -1,7 +1,7 @@
-<h1>Featured Locations</h1>
+<h1>Nearby Locations</h1>
 <div class="mt10">
- <% unless @featured_locations.nil? %>
- 	<% @featured_locations.each do |location| %>
+ <% unless @pizza_locations.nil? %>
+ 	<% @pizza_locations.each do |location| %>
 		<div class="highlight">
 			<div class="col-md-3"><%= image_tag location.primary_photo_url(:thumb) %></div>
 			<div class="col-md-9 content">
