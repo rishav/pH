@@ -9,7 +9,9 @@ class PizzaLocationTest < ActiveSupport::TestCase
   should validate_presence_of(:city)
   should validate_presence_of(:zipcode)
   should validate_presence_of(:country)
-  
+  should have_many(:photos)
+  should have_one(:primary_photo)
+    
   test "should geocode address and store lat and long" do
     pizza_location = create(:pizza_location)
     assert pizza_location.latitude.to_i == 17

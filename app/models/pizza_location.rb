@@ -7,6 +7,9 @@ class PizzaLocation < ActiveRecord::Base
   ratyrate_rateable "overall"    
   validates_presence_of :name, :city, :address, :zipcode, :country
   
+  has_many :photos
+  has_one :primary_photo, -> { where(primary: true) }, :class_name => "Photo"
+    
   geocoded_by :complete_address  
   after_validation :geocode
   
