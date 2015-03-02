@@ -1,5 +1,6 @@
 class PizzaLocation < ActiveRecord::Base
-
+  
+  scope :featured, -> { where({featured: true})}
   extend FriendlyId
   friendly_id :name, use: :slugged
   
