@@ -30,7 +30,7 @@ gem 'friendly_id'
 gem 'geocoder'
 gem 'ratyrate'
 gem 'paperclip'
-
+gem 'nested_form'
 
 
 # gem 'bcrypt', '~> 3.1.7'

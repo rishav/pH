@@ -9,6 +9,8 @@ class PizzaLocation < ActiveRecord::Base
   
   has_many :photos
   has_one :primary_photo, -> { where(primary: true) }, :class_name => "Photo"
+  
+  accepts_nested_attributes_for :photos,:reject_if => lambda { |photo| photo[:image].blank? }, :allow_destroy => true
     
   geocoded_by :complete_address  
   after_validation :geocode
