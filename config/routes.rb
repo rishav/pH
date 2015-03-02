@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   post '/rate' => 'rater#create', :as => 'rate'
   devise_for :users
+  resources :pizza_locations
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

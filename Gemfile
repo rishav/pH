@@ -29,8 +29,7 @@ gem 'devise'
 gem 'friendly_id'
 gem 'geocoder'
 gem 'ratyrate'
-gem 'carrierwave'
-
+gem 'paperclip'
 
 
 
