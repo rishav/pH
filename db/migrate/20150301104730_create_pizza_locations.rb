@@ -7,7 +7,6 @@ class CreatePizzaLocations < ActiveRecord::Migration
       t.integer :zipcode
       t.string :country
       t.text :specialities
-
       t.timestamps null: false
     end
   end

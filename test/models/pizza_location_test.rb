@@ -15,4 +15,11 @@ class PizzaLocationTest < ActiveSupport::TestCase
     assert pizza_location.latitude.to_i == 17
   end
   
+  test "sets featured_at when featured " do
+    pizza_location = create(:pizza_location)
+    pizza_location.feature!
+    assert pizza_location.featured
+    assert_not_nil pizza_location.featured_at    
+  end
+  
 end

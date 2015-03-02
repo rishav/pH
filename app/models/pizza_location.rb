@@ -2,7 +2,8 @@ class PizzaLocation < ActiveRecord::Base
 
   extend FriendlyId
   friendly_id :name, use: :slugged
-    
+  
+  #ratyrate_rateable "overall"    
   validates_presence_of :name, :city, :address, :zipcode, :country
   
   geocoded_by :complete_address  
@@ -10,6 +11,12 @@ class PizzaLocation < ActiveRecord::Base
   
   def complete_address
     [address, city, zipcode, country].compact.join(', ')
+  end
+  
+  def feature!
+    self.featured = true
+    self.featured_at = Time.now
+    save
   end
 
 end
