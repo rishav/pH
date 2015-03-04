@@ -4,7 +4,7 @@ class PizzaLocation < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, use: :slugged
   
-  ratyrate_rateable "overall"    
+  ratyrate_rateable "overall"
   validates_presence_of :name, :city, :address, :zipcode, :country
   
   has_many :photos

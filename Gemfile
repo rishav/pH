@@ -40,6 +40,7 @@ group :test do
   gem 'shoulda'
   gem 'factory_girl'
   gem 'database_cleaner'
+  gem 'simplecov'
 end
 group :development, :test do
   gem 'quiet_assets' 
