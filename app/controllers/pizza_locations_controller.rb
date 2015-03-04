@@ -1,5 +1,5 @@
 class PizzaLocationsController < ApplicationController
-  before_filter :admin_only?, :only => [:edit, :update]
+  before_filter :admin_only?, :only => [:new, :create, :edit, :update]
   
   def show 
     @pizza_location = PizzaLocation.friendly.find(params[:id])
@@ -9,9 +9,25 @@ class PizzaLocationsController < ApplicationController
     @pizza_locations = PizzaLocation.near(params[:search], 10)
   end  
   
+  
+  def new
+    @pizza_location = PizzaLocation.new
+  end
+  
+  def create
+    @pizza_location = PizzaLocation.new(pizza_location_params)
+    if @pizza_location.save
+      redirect_to @pizza_location
+    else
+      render "new"
+    end    
+  end
+  
   def edit
     @pizza_location = PizzaLocation.friendly.find(params[:id])
   end
+
+
   
   def update
     @pizza_location = PizzaLocation.friendly.find(params[:id])
